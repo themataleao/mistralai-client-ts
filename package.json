@@ -11,7 +11,7 @@
     "dev": "vitest",
     "test": "vitest run",
     "ci": "pnpm run lint && pnpm run test && pnpm run build",
-    "publish": "pnpm run ci && changeset publish"
+    "release": "pnpm run ci && changeset publish"
   },
   "keywords": [],
   "author": "themataleao@gmail.com",
