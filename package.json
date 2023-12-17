@@ -1,5 +1,5 @@
 {
-  "name": "@ai-utils/client-ts",
+  "name": "@ai-utils/mistral",
   "version": "0.0.2",
   "description": "Client library written in TypeScript for MistralAI",
   "main": "./dist/index.js",
