@@ -19,8 +19,13 @@
   "license": "ISC",
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
+    "@types/node-fetch": "^2.6.9",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "vitest": "^1.0.4"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "zod": "^3.22.4"
   }
 }

@@ -1,3 +1,2 @@
-export const helloMistral = () => {
-  console.log("Hello Mistral!");
-};
+export * from "./types";
+export * from "./client";
