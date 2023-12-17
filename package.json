@@ -2,7 +2,9 @@
   "name": "@mistralai/client-ts",
   "version": "0.0.1",
   "description": "Client library written in TypeScript for MistralAI",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "tsc",
@@ -14,6 +16,7 @@
   "author": "themataleao@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "@changesets/cli": "^2.27.1",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "vitest": "^1.0.4"
