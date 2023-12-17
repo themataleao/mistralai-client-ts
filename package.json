@@ -1,6 +1,6 @@
 {
   "name": "@mistralai/client-ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Client library written in TypeScript for MistralAI",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
