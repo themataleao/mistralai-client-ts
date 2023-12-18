@@ -1,39 +1,39 @@
+import axios, { AxiosRequestConfig } from "axios";
+
 const RETRY_STATUS_CODES: number[] = [429, 502, 503, 504];
+
 const ENDPOINT: string = "https://api.mistral.ai";
+
+type RequestProps = {
+  endpoint: string;
+  method: string;
+  data?: any;
+};
 
 export class apiService {
   private apiKey: string;
-  private endpoint: string;
-  constructor() {
-    this.apiKey = process.env.apiKey || "";
-    this.endpoint = ENDPOINT;
+  constructor(apiKey: string, endpoint?: string) {
+    this.apiKey = apiKey || "";
   }
-  async _req(
-    url: string,
-    options: RequestInit = {},
-    retries: number = 3
-  ): Promise<any> {
-    // Inject the Bearer token into the headers
-    options.headers = {
-      ...options.headers,
-      Authorization: `Bearer ${this.apiKey}`,
-    };
-
+  async _req(props: RequestProps): Promise<any> {
+    const { endpoint, method, data = {} } = props;
+    const url = `${ENDPOINT}${endpoint}`;
     try {
-      const response: Response = await fetch(url, options);
-      // Check if response is successful
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      const response = await axios({
+        method: method,
+        url: `${url}`,
+        data: data,
+        headers: {
+          Authorization: `Bearer ${this.apiKey}`,
+        },
+        responseType: "json",
+      }).catch((error) => {
+        return error.response;
+      });
 
-      return await response.json();
+      return await response.data;
     } catch (error) {
-      if (retries > 0) {
-        console.log(`Retrying... (${retries} retries left)`);
-        return await this._req(url, options, retries - 1);
-      } else {
-        throw new Error(`Failed after several retries: ${error}`);
-      }
+      console.log(error);
     }
   }
 }

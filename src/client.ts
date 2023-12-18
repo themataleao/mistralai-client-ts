@@ -1,49 +1,36 @@
-import { z } from "zod";
-import fetch from "node-fetch";
 import { ChatCompletionRequestType } from ".";
 import { apiService } from "./services";
+import { mapChatCompletionRequest } from "./utils";
 
-const RETRY_STATUS_CODES: number[] = [429, 502, 503, 504];
 const ENDPOINT: string = "https://api.mistral.ai";
 
 export class MistralClient {
+  private apiKey: string;
   private endpoint: string;
   private apiService: apiService;
-  private textDecoder: TextDecoder;
 
-  constructor() {
+  constructor(apiKey: string) {
+    this.apiKey = apiKey;
     this.endpoint = ENDPOINT;
-    this.apiService = new apiService();
+    this.apiService = new apiService(this.apiKey);
   }
 
-  async chat({
-    model,
-    messages,
-    temperature,
-    maxTokens,
-    topP,
-    randomSeed,
-    stream,
-    safeMode,
-  }: ChatCompletionRequestType): Promise<string> {
-    const body: ChatCompletionRequestType = {
-      model,
-      messages,
-      temperature,
-      maxTokens,
-      topP,
-      randomSeed,
-      stream,
-      safeMode,
-    };
+  async listModels(): Promise<any> {
+    const response = await this.apiService._req({
+      endpoint: `/v1/models`,
+      method: "get",
+    });
 
-    const response = await this.apiService._req(
-      `${this.endpoint}/chat-completion`,
-      {
-        method: "POST",
-        body: JSON.stringify(body),
-      }
-    );
+    return response;
+  }
+
+  async chat(props: ChatCompletionRequestType): Promise<string> {
+    const body = mapChatCompletionRequest(props);
+    const response = await this.apiService._req({
+      endpoint: `/v1/chat/completions`,
+      method: "post",
+      data: body,
+    });
 
     const data = await response.json();
     return data.text;
