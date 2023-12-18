@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { MistralClient } from "./client";
+import { MistralClient } from "@/client";
 
 const apiKey = process.env.MISTRAL_API_KEY || "";
 
