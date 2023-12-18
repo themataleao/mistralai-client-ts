@@ -1,4 +1,8 @@
-## Build the library
+## Typescript implementation of @mistralai/mistralai
+
+This repo is based on the javascript library made by (Mistral AI)[https://github.com/mistralai/client-js]
+
+##  Build the library
 
 ```bash
 pnpm run build
