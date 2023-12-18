@@ -1,5 +1,11 @@
 # @mistralai/client-ts
 
+## 0.1.1
+
+### Patch Changes
+
+- b2ec50c: udpated readme
+
 ## 0.1.0
 
 ### Minor Changes
