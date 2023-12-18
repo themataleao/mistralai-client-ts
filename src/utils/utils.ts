@@ -1,8 +1,6 @@
-import { ChatCompletionRequestType } from "../types";
+import { ChatCompletionRequest } from "@/types";
 
-export const mapChatCompletionRequest = (
-  request: ChatCompletionRequestType
-) => {
+export const mapChatCompletionRequest = (request: ChatCompletionRequest) => {
   return {
     model: request.model,
     messages: request.messages,
