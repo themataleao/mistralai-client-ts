@@ -1,5 +1,11 @@
 # @mistralai/client-ts
 
+## 0.1.0
+
+### Minor Changes
+
+- 2be2f55: added all basic routes for accessing mistral api - added types and structured library project
+
 ## 0.0.3
 
 ### Patch Changes
