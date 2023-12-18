@@ -10,7 +10,7 @@ client
     messages: [{ role: "user", content: "What is the best French cheese?" }],
   })
   .then((response) => {
-    console.log(response);
+    console.log(response.choices[0].message.content);
   })
   .catch((error) => {
     console.error(error);
