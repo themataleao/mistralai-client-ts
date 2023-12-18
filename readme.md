@@ -1,6 +1,6 @@
-## Typescript implementation of @mistralai/mistralai
+## TS Mistral AI Library
 
-This repo is based on the javascript library made by (Mistral AI)[https://github.com/mistralai/client-js]
+This repo is based on the javascript library made by [Mistral AI](https://github.com/mistralai/client-js)
 
 ##  Build the library
 
@@ -16,4 +16,4 @@ Build the library for publishing on npm
 pnpm changeset
 ```
 
-A changeset describes what has been changed since last release. Based on the changeset githbu will automatically create a PR with the new release of the library.
+Based on the changeset github will automatically create a PR with the new release of the library.
