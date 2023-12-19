@@ -4,9 +4,9 @@ const apiKey = process.env.MISTRAL_API_KEY || "";
 
 const client = new MistralClient(apiKey);
 
-const input = [];
+const input: string[] = [];
 for (let i = 0; i < 1; i++) {
-  input.push("What is the best Swiss cheese?");
+  input.push("What is the best swiss cheese?");
 }
 
 client

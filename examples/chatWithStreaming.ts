@@ -7,7 +7,7 @@ const client = new MistralClient(apiKey);
 client
   .chatStream({
     model: "mistral-tiny",
-    messages: [{ role: "user", content: "What is the best French cheese?" }],
+    messages: [{ role: "user", content: "What is the best swiss cheese?" }],
   })
   .then((response) => {
     console.log(response.choices[0]);
