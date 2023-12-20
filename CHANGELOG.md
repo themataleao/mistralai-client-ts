@@ -1,5 +1,11 @@
 # @mistralai/client-ts
 
+## 0.1.2
+
+### Patch Changes
+
+- d504296: handled return values of api calls better
+
 ## 0.1.1
 
 ### Patch Changes
