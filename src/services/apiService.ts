@@ -17,8 +17,9 @@ export class apiService {
     this.apiKey = apiKey || "";
   }
   async _req(props: RequestProps): Promise<any> {
-    const { endpoint, method, data = { stream: "json" } } = props;
+    const { endpoint, method, data = { stream: false } } = props;
     const url = `${ENDPOINT}${endpoint}`;
+    let retries = 3;
     try {
       const response = await axios({
         method: method,
@@ -28,13 +29,16 @@ export class apiService {
           Authorization: `Bearer ${this.apiKey}`,
         },
         responseType: data.stream ? "stream" : "json",
-      }).catch((error) => {
-        return error.response;
       });
-
-      return await response.data;
+      if (retries > 1 && RETRY_STATUS_CODES.includes(response.status)) {
+        retries--;
+        return this._req(props);
+      }
+      if (response.status === 200) {
+        return response.data;
+      }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 }

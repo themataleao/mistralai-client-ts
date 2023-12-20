@@ -18,11 +18,11 @@ const chatRequestSchema = z.object({
 
 export type ChatRequest = z.infer<typeof chatRequestSchema>;
 
-const chatResponseSchema = z.object({
+export const ChatResponseSchema = z.object({
   id: z.string(),
   object: z.string(),
   created: z.number(),
-  model: z.string(),
+  model: z.enum(["mistral-tiny", "mistral-small", "mistral-medium"]),
   choices: z.array(
     z.object({
       index: z.number(),
@@ -35,7 +35,7 @@ const chatResponseSchema = z.object({
   ),
 });
 
-export type ChatResponse = z.infer<typeof chatResponseSchema>;
+export type ChatResponse = z.infer<typeof ChatResponseSchema>;
 
 const ChatCompletionRequestSchema = z.object({
   model: z.string(),

@@ -7,7 +7,7 @@ const client = new MistralClient(apiKey);
 client
   .listModels()
   .then((response: MistralListModelsResponse) => {
-    console.log(response.data);
+    console.log(response);
   })
   .catch((error) => {
     console.error(error);
